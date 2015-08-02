@@ -1,0 +1,11 @@
+app:
+  build: .
+  command: "npm run-script dev"
+  volumes:
+    - .:/usr/src/app
+  ports:
+    - "8080:8080"
+  links:
+    - "redis:redis"
+redis:
+  image: redis

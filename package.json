@@ -1,0 +1,18 @@
+{
+    "name": "mercurius",
+    "private": true,
+    "version": "0.0.1",
+    "description": "backend of mercurius - storage of all products",
+    "author": "Bernhard Widtmann <bernhard.widtmann@maxdome.de>",
+    "dependencies": {
+        "express": "3.2.4",
+        "redis": "~0.12.1"
+    },
+    "devDependencies": {
+        "forever": "^0.14.1"
+    },
+    "scripts": {
+        "start": "node app.js",
+        "dev": "npm install && ./node_modules/forever/bin/forever -w app.js"
+    }
+}
