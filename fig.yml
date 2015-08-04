@@ -1,6 +1,6 @@
 app:
   build: .
-  command: "npm run-script dev"
+  command: "npm run-script start"
   volumes:
     - .:/usr/src/app
   ports:

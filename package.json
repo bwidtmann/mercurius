@@ -9,11 +9,7 @@
     "express": "3.2.4",
     "mongoose": "^4.1.0"
   },
-  "devDependencies": {
-    "forever": "^0.14.1"
-  },
   "scripts": {
-    "start": "node app.js",
-    "dev": "npm install && ./node_modules/forever/bin/forever -w app.js"
+    "start": "node app.js"
   }
 }

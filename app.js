@@ -26,10 +26,10 @@ var Product = mongoose.model('Product', {   title: String,
 app.get('/search', function (req, res) {
 
     Product.find({
-        //price: { $gt: 0, $lt: 200 }
-        }, function(err, products) {
+        price: { $gt: 0, $lt: 150 }
+    }, function(err, products) {
             res.send(products);
-    });
+    }).sort({ price: 1 });
 });
 
 var downloadUrl = function(url, callback) {
