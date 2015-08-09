@@ -1,7 +1,7 @@
 var express = require('express');
 
 var db = require('./db.js');
-var crawler = require('./crawlers/crawler.js');
+var Crawler = require('./crawlers/crawler.js');
 var Product = require('./models/product.js');
 
 // Constants
@@ -22,7 +22,7 @@ app.get('/search', function (req, res) {
 
 app.get('/crawl', function (req, res) {
 
-    res.send('crawling ' + 'bridesire' + ' ...\n');
+    res.send('crawling ' + req.query.site + ' ...\n');
 
     // first flush all products before crawling new products
     Product.remove({}, function(err) {
@@ -30,7 +30,8 @@ app.get('/crawl', function (req, res) {
     });
 
     // start crawling
-    crawler.downloadUrl('http://www.bridesire.de/brautkleider_c97', crawler.crawlProductList);
+    var crawler = new Crawler('bridesire');
+    crawler.crawl();
 
 });
 

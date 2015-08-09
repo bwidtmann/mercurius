@@ -1,13 +1,15 @@
 var mongoose = require('mongoose');
+var color = require('./product/color.js');
+var size = require('./product/size.js');
 
 var schema = new mongoose.Schema({
-    title: String,
+    title: { type: String, trim: true },
     price: Number,
-    category: String,
-    link: String,
-    imageUrl: String,
-    colors: String,
-    sizes: String
+    category: { type: String, trim: true },
+    link: { type: String, trim: true },
+    imageUrl: { type: String, trim: true },
+    colors: { type: Array, set: color.setColors },
+    sizes: { type: Array, set: size.setSizes }
 });
 
 module.exports = mongoose.model('Product', schema);
