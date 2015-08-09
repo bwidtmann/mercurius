@@ -51,7 +51,7 @@ Crawler.prototype.crawlProductDetails = function($) {
     var product = new Product();
     // retrieve (parse) relevant product details
     product.title = $('h1').text();
-    product.price = parseFloat($('#products_price_unit').text().trim().replace(/[^0-9\.-]+/g,''));
+    product.price = $('#products_price_unit').text();
     product.category = $('a span.red').text();
     product.link = $('a span.red').parent().next().attr('href');
     product.imageUrl = $('#product_flash_show').attr('href');
