@@ -19,16 +19,16 @@ Jjshouse.prototype.crawlProductList = function($) {
         link = self.baseUrl + $(this).find('.pic>a').attr('href');
         // follow link to product details
         self.downloadUrl(link, self.crawlProductDetails.bind(self));
-    });/*
+    });
     // try to go to next page
-    $('p.b>a').each(function() {
-        if ($(this).attr('title').trim() === 'Next Page') {
-            link = $(this).attr('href');
+    $('.page_redirect').each(function() {
+        if ($(this).text().match(/Nächste/)) {
+            link = self.baseUrl + $(this).attr('href');
             // follow link to next page
             self.downloadUrl(link, self.crawlProductList.bind(self));
             return false;
         }
-    })*/
+    });
 
 };
 

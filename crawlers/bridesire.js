@@ -27,7 +27,7 @@ Bridesire.prototype.crawlProductList = function($) {
             self.downloadUrl(link, self.crawlProductList.bind(self));
             return false;
         }
-    })
+    });
 
 };
 
