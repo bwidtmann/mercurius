@@ -3,7 +3,8 @@ var setColors = function(colorsRaw) {
         acceptedColors = [
             'Champagner',
             'Elfenbein',
-            'Weiß'
+            'Weiß',
+            'Zartrosa'
         ];
     colorsRaw.forEach(function(colorRaw) {
         if (acceptedColors.indexOf(colorRaw) > -1) {

@@ -30,7 +30,7 @@ app.get('/crawl', function (req, res) {
     });
 
     // start crawling
-    var crawler = new Crawler('bridesire');
+    var crawler = new Crawler(req.query.site);
     crawler.crawl();
 
 });
