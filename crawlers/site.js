@@ -20,4 +20,10 @@ Site.prototype.downloadUrl = function(url, callback) {
     })
 };
 
+Site.prototype.stringToArray = function(string) {
+    return string.trim().split(',').map(function(s) {
+        return s.trim();
+    });
+};
+
 module.exports = Site;
