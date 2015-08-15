@@ -32,11 +32,37 @@ Bridesire.prototype.crawlProductList = function($) {
 };
 
 Bridesire.prototype.crawlProductDetails = function($) {
-    var product = new Product();
+    var self = this,
+        product = new Product();
     // retrieve (parse) relevant product details
     product.title = $('h1').text();
     product.price = $('#products_price_unit').text();
     product.category = $('a span.red').text();
+
+    $('.description_sec').text().split('\n').forEach(function(line) {
+        var splittedLine = line.split(':'),
+            title = splittedLine[0].trim(),
+            value = (splittedLine[1] || '').trim();
+
+        if (title.match(/Silhouette/i)) {
+            product.silhouette = value;
+        } else if (title.match(/Ausschnitt/i)) {
+            product.neckline = value;
+        } else if (title.match(/Saum/i)) {
+            product.hemline = value;
+        } else if (title.match(/Stoff/i)) {
+            product.fabric = self.stringToArray(value);
+        } else if (title.match(/Verschönerung|Verzierung/i)) {
+            product.embellishment = self.stringToArray(value);
+        } else if (title.match(/Träger/i)) {
+            product.straps = value;
+        } else if (title.match(/Ärmel/i)) {
+            product.sleeve = value;
+        } else if (title.match(/Rücken/i)) {
+            product.backstyle = value;
+        }
+    });
+
     product.link = $('a span.red').parent().next().attr('href');
     product.imageUrl = $('#product_flash_show').attr('href');
     $('#attrib-2 option').each(function() {
@@ -46,7 +72,7 @@ Bridesire.prototype.crawlProductDetails = function($) {
         product.sizes.push($(this).text());
     });
     // store them in db
-    product.save(function(err) {console.log('product saved', err)});
+    product.save(function(err, doc) {console.log('product saved', err, doc)});
 };
 
 module.exports = Bridesire;
