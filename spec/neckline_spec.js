@@ -42,6 +42,14 @@ describe('neckline', function() {
             expect(set('1-Schulter')).toBe('oneShoulder');
         });
     });
+    describe('offShoulder', function() {
+        it('off-the-shoulder', function() {
+            expect(set('off-the-shoulder')).toBe('offShoulder');
+        });
+        it('Off Shoulder', function() {
+            expect(set('Off Shoulder')).toBe('offShoulder');
+        });
+    });
     describe('undefined', function() {
         it('something', function() {
             expect(set('something')).toBeUndefined();
