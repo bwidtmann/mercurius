@@ -1,15 +1,16 @@
 var mongoose = require('mongoose');
+var helper = require('./product/helper.js');
 var price = require('./product/price.js');
 var color = require('./product/color.js');
 var size = require('./product/size.js');
-var silhouette = require('./product/silhouette.js');
-var neckline = require('./product/neckline.js');
+var silhouettes = require('./product/silhouettes.json');
+var necklines = require('./product/necklines.json');
 
 var schema = new mongoose.Schema({
     title: { type: String, trim: true },
     price: { type: Number, set: price.setPrice },
-    silhouette: { type: String, set: silhouette.normalize },
-    neckline: { type: String, set: neckline.normalize },
+    silhouette: { type: String, set: function(valueRaw) { return helper.normalize(silhouettes, valueRaw) } },
+    neckline: { type: String, set: function(valueRaw) { return helper.normalize(necklines, valueRaw) } },
     waist: { type: String, trim: true },
     hemline: { type: String, trim: true },
     fabric: { type: Array, trim: true },

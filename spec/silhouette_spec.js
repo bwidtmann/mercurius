@@ -1,23 +1,25 @@
-var silhouette = require('../models/product/silhouette.js');
+var helper = require('../models/product/helper.js');
+var silhouettes = require('../models/product/silhouettes.json');
+var set = function(valueRaw) { return helper.normalize(silhouettes, valueRaw) };
 
 describe('silhouette', function() {
     describe('aLinePrincess', function() {
         it('A-Line', function() {
-            expect(silhouette.normalize('A-Line')).toBe('aLinePrincess');
+            expect(set('A-Line')).toBe('aLinePrincess');
         });
         it('A-Linie', function() {
-            expect(silhouette.normalize('A-Linie')).toBe('aLinePrincess');
+            expect(set('A-Linie')).toBe('aLinePrincess');
         });
         it('Princess-Line', function() {
-            expect(silhouette.normalize('Princess-Line')).toBe('aLinePrincess');
+            expect(set('Princess-Line')).toBe('aLinePrincess');
         });
         it('Prinzessin-Linie', function() {
-            expect(silhouette.normalize('Prinzessin-Linie')).toBe('aLinePrincess');
+            expect(set('Prinzessin-Linie')).toBe('aLinePrincess');
         });
     });
     describe('undefined', function() {
         it('something', function() {
-            expect(silhouette.normalize('something')).toBeUndefined();
+            expect(set('something')).toBeUndefined();
         });
     });
 });

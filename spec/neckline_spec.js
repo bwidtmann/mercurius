@@ -1,47 +1,50 @@
-var neckline = require('../models/product/neckline.js');
+var helper = require('../models/product/helper.js');
+var necklines = require('../models/product/necklines.json');
+var set = function(valueRaw) { return helper.normalize(necklines, valueRaw) };
+
 
 describe('neckline', function() {
     describe('sweetheart', function() {
         it('Herz', function() {
-            expect(neckline.normalize('Herz')).toBe('sweetheart');
+            expect(set('Herz')).toBe('sweetheart');
         });
         it('Herz-Ausschnitt', function() {
-            expect(neckline.normalize('Herz-Ausschnitt')).toBe('sweetheart');
+            expect(set('Herz-Ausschnitt')).toBe('sweetheart');
         });
         it('Herzausschnitt', function() {
-            expect(neckline.normalize('Herzausschnitt')).toBe('sweetheart');
+            expect(set('Herzausschnitt')).toBe('sweetheart');
         });
         it('heart-shaped', function() {
-            expect(neckline.normalize('heart-shaped')).toBe('sweetheart');
+            expect(set('heart-shaped')).toBe('sweetheart');
         });
     });
     describe('strapless', function() {
         it('strapless', function() {
-            expect(neckline.normalize('strapless')).toBe('strapless');
+            expect(set('strapless')).toBe('strapless');
         });
         it('trägerlos', function() {
-            expect(neckline.normalize('trägerlos')).toBe('strapless');
+            expect(set('trägerlos')).toBe('strapless');
         });
     });
     describe('strap', function() {
         it('strap', function() {
-            expect(neckline.normalize('strap')).toBe('strap');
+            expect(set('strap')).toBe('strap');
         });
         it('Träger', function() {
-            expect(neckline.normalize('Träger')).toBe('strap');
+            expect(set('Träger')).toBe('strap');
         });
     });
     describe('oneShoulder', function() {
         it('one shoulder', function() {
-            expect(neckline.normalize('one shoulder')).toBe('oneShoulder');
+            expect(set('one shoulder')).toBe('oneShoulder');
         });
         it('1 Halter', function() {
-            expect(neckline.normalize('1-Schulter')).toBe('oneShoulder');
+            expect(set('1-Schulter')).toBe('oneShoulder');
         });
     });
     describe('undefined', function() {
         it('something', function() {
-            expect(neckline.normalize('something')).toBeUndefined();
+            expect(set('something')).toBeUndefined();
         });
     });
 });
