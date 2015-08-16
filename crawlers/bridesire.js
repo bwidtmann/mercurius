@@ -39,10 +39,9 @@ Bridesire.prototype.crawlProductDetails = function($) {
     product.price = $('#products_price_unit').text();
     product.category = $('a span.red').text();
 
-    $('.description_sec').text().split('\n').forEach(function(line) {
-        var splittedLine = line.split(':'),
-            title = splittedLine[0].trim(),
-            value = (splittedLine[1] || '').trim();
+    $('.description_sec>strong').each(function() {
+        var title = $(this).text(),
+            value = $(this).get(0).nextSibling.data || '';
 
         if (title.match(/Silhouette/i)) {
             product.silhouette = value;
