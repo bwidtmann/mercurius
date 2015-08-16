@@ -2,11 +2,12 @@ var mongoose = require('mongoose');
 var price = require('./product/price.js');
 var color = require('./product/color.js');
 var size = require('./product/size.js');
+var silhouette = require('./product/silhouette.js');
 
 var schema = new mongoose.Schema({
     title: { type: String, trim: true },
     price: { type: Number, set: price.setPrice },
-    silhouette: { type: String, trim: true },
+    silhouette: { type: String, set: silhouette.normalize },
     neckline: { type: String, trim: true },
     waist: { type: String, trim: true },
     hemline: { type: String, trim: true },
