@@ -1,0 +1,9 @@
+[
+    { "key": "pink", "regex": "pink|rosa" },
+    { "key": "burgundy", "regex": "burgund" },
+    { "key": "red", "regex": "red|rot" },
+    { "key": "white", "regex": "white|weiß|weiss" },
+    { "key": "ivory", "regex": "ivory|elfenbein" },
+    { "key": "champagne", "regex": "champagne" },
+    { "key": "silver", "regex": "silver|silber" }
+]

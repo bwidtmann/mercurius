@@ -11,8 +11,18 @@ var normalize = function(acceptedValues, valueRaw) {
     return result;
 };
 
+var normalizeArray = function(acceptedValues, valuesRaw) {
+    var result = [];
+    valuesRaw.forEach(function(valueRaw) {
+        var valueNormalized = normalize(acceptedValues, valueRaw);
+        valueNormalized && result.push(valueNormalized);
+    });
+    return result;
+};
+
 var helper = {
-    normalize: normalize
+    normalize: normalize,
+    normalizeArray: normalizeArray
 };
 
 module.exports = helper;
