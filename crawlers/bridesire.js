@@ -7,7 +7,7 @@ var Bridesire = function() {
     this.startUrl = 'http://www.bridesire.de/brautkleider_c97';
 };
 
-Bridesire.prototype = new Site();
+Bridesire.prototype.__proto__ = Site.prototype;
 
 Bridesire.prototype.crawlProductList = function($) {
     var self = this,

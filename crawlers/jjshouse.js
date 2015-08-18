@@ -7,7 +7,7 @@ var Jjshouse = function() {
     this.startUrl = 'http://www.jjshouse.com/de/Brautkleider-c2';
 };
 
-Jjshouse.prototype = new Site();
+Jjshouse.prototype.__proto__ = Site.prototype;
 
 Jjshouse.prototype.crawlProductList = function($) {
     var self = this,

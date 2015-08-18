@@ -8,6 +8,7 @@ var normalize = function(acceptedValues, valueRaw) {
         }
         return true;
     });
+    EVENTBUS.emit('normalized', { valueRaw: valueRaw, value: result });
     return result;
 };
 

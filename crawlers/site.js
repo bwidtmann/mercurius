@@ -4,6 +4,7 @@ var cheerio = require('cheerio');
 var Site = function() {};
 
 Site.prototype.crawl = function() {
+    EVENTBUS.emit('started', { name: this.startUrl });
     this.downloadUrl(this.startUrl, this.crawlProductList.bind(this));
 };
 
