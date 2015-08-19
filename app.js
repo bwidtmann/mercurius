@@ -1,7 +1,4 @@
 var express = require('express');
-
-var EventBus = require('./eventbus.js');
-EVENTBUS = new EventBus();
 var reporter = require('./reporters/reporter.js');
 var db = require('./db.js');
 var Crawler = require('./crawlers/crawler.js');

@@ -1,10 +1,11 @@
 var http = require('http');
 var cheerio = require('cheerio');
+var eventBus = require('../buses/eventbus.js');
 
 var Site = function() {};
 
 Site.prototype.crawl = function() {
-    EVENTBUS.emit('started', { name: this.startUrl });
+    eventBus.emit('started', { name: this.startUrl });
     this.downloadUrl(this.startUrl, this.crawlProductList.bind(this));
 };
 

@@ -1,3 +1,5 @@
+var eventBus = require('../../buses/eventbus.js');
+
 var normalize = function(acceptedValues, valueRaw) {
     var result;
     acceptedValues.every(function(acceptedValue) {
@@ -8,7 +10,7 @@ var normalize = function(acceptedValues, valueRaw) {
         }
         return true;
     });
-    EVENTBUS.emit('normalized', { valueRaw: valueRaw, value: result });
+    eventBus.emit('normalized', { valueRaw: valueRaw, value: result });
     return result;
 };
 

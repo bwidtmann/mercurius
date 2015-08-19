@@ -6,4 +6,4 @@ var EventBus = function() {
 
 EventBus.prototype.__proto__ = events.EventEmitter.prototype;
 
-module.exports = EventBus;
+module.exports = new EventBus();
