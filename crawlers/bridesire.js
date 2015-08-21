@@ -33,7 +33,7 @@ Bridesire.prototype.crawlProductList = function($) {
 
 Bridesire.prototype.crawlProductDetails = function($) {
     var self = this,
-        colors = [], sizes = [],
+        colors = [], sizes = [], straps = [],
         product = new Product();
     // retrieve (parse) relevant product details
     product.title = $('h1').text();
@@ -48,22 +48,21 @@ Bridesire.prototype.crawlProductDetails = function($) {
             product.silhouette = value;
         } else if (title.match(/Ausschnitt/i)) {
             product.neckline = value;
+            straps.push(value);
         } else if (title.match(/Saum/i)) {
             product.hemline = value;
         } else if (title.match(/Stoff/i)) {
             product.fabric = self.stringToArray(value);
         } else if (title.match(/Verschönerung|Verzierung/i)) {
             product.embellishment = self.stringToArray(value);
-        } else if (title.match(/Träger/i)) {
-            product.straps = value;
         } else if (title.match(/Ärmel/i)) {
-            product.sleeve = value;
+            straps.push(value);
         } else if (title.match(/Rücken/i)) {
             product.backstyle = value;
         }
     });
-
-    product.link = $('a span.red').parent().next().attr('href');
+    product.straps = straps;
+    product.linkUrl = $('a span.red').parent().next().attr('href');
     product.imageUrl = $('#product_flash_show').attr('href');
     $('#attrib-2 option').each(function() {
         colors.push($(this).text());

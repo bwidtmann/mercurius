@@ -1,0 +1,19 @@
+[
+{ "key": "satin", "regex": "satin" },
+{ "key": "tulle", "regex": "tulle|tüll" },
+{ "key": "organza", "regex": "organza" },
+{ "key": "lace", "regex": "lace|spitze" },
+{ "key": "chiffon", "regex": "chiffon" },
+{ "key": "taffeta", "regex": "taffeta|taft" },
+{ "key": "charmeuse", "regex": "charmeuse" },
+{ "key": "jersey", "regex": "jersey" },
+{ "key": "perlen", "regex": "perle|beading|pearl" },
+{ "key": "ruffle", "regex": "ruffle|rüsche|ruching" },
+{ "key": "sequins", "regex": "sequin|paillette" },
+{ "key": "flowers", "regex": "flowers|blume" },
+{ "key": "embroidery", "regex": "embroider|stick" },
+{ "key": "sash", "regex": "schleife|gürtel|sash|bow|ribbon|bänder|band|schärpe" },
+{ "key": "crystal", "regex": "crystal|kristall" },
+{ "key": "feather", "regex": "feather|feder|pelz" },
+{ "key": "buttons", "regex": "button|knopf|knöpfe" }
+]

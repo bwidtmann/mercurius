@@ -1,0 +1,14 @@
+[
+    { "key": "strapless", "regex": "strapless|trägerlos|halterlos" },
+    { "key": "straps", "regex": "straps|träger" },
+    { "key": "oneShoulder", "regex": "one.*shoulder|1.*schulter" },
+    { "key": "halter", "regex": "neck.*holder|halter" },
+    { "key": "spaghetti", "regex": "spaghetti" },
+    { "key": "capStraps", "regex": "cap|kappe" },
+    { "key": "sleeveless", "regex": "sleeveless|ärmellos" },
+    { "key": "shortSleeves", "regex": "short|kurz" },
+    { "key": "halfSleeves", "regex": "1/2|half|halb" },
+    { "key": "threefourthSleeves", "regex": "3/4|dreiviertel|three" },
+    { "key": "longSleeves", "regex": "long|lang" },
+    { "key": "sleeves", "regex": "sleeves|ärmel" }
+]

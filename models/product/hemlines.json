@@ -1,0 +1,15 @@
+[
+  { "key": "short", "regex": "kurz|mini|short" },
+  { "key": "knee", "regex": "knie|knee" },
+  { "key": "tea", "regex": "waden|tea" },
+  { "key": "ankle", "regex": "knöchel|ankle" },
+  { "key": "floor", "regex": "boden|floor" },
+  { "key": "asymmetrical", "regex": "asymmetr" },
+  { "key": "sweep", "regex": "sweep|pinsel" },
+  { "key": "court", "regex": "hof|court" },
+  { "key": "chapel", "regex": "kapelle|chapel" },
+  { "key": "cathedral", "regex": "kathedral|cathedral" },
+  { "key": "royal", "regex": "könig|royal" },
+  { "key": "watteau", "regex": "watteau" },
+  { "key": "detachable", "regex": "abnehmbar|detach" }
+]

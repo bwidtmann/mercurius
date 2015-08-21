@@ -1,14 +1,9 @@
 [
     { "key": "sweetheart", "regex": "heart|herz" },
-    { "key": "strapless", "regex": "strapless|trägerlos|halterlos" },
     { "key": "v", "regex": "v.*neck|v.*ausschnitt|deep.*v" },
     { "key": "scoop", "regex": "scoop|u.*ausschnitt" },
-    { "key": "strap", "regex": "strap|träger|halter" },
-    { "key": "oneShoulder", "regex": "one.*shoulder|1.*Schulter" },
     { "key": "offShoulder", "regex": "off.*shoulder|schulterfrei" },
     { "key": "square", "regex": "square|carre|carré|rechteck" },
     { "key": "scalloped", "regex": "scallop|welle" },
-    { "key": "high", "regex": "high|steh" },
-    { "key": "neckholder", "regex": "neck.*holder" },
-    { "key": "spaghetti", "regex": "spaghetti" }
+    { "key": "high", "regex": "high|steh" }
 ]

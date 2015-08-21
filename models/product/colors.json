@@ -1,10 +1,16 @@
 [
-    { "key": "pink", "regex": "pink|rosa" },
-    { "key": "burgundy", "regex": "burgund" },
-    { "key": "red", "regex": "red|rot" },
+    { "key": "pink", "regex": "pink|rosa|fuchsia" },
+    { "key": "red", "regex": "red|rot|burgund|watermelon|wassermelone" },
     { "key": "white", "regex": "white|weiß|weiss" },
     { "key": "ivory", "regex": "ivory|elfenbein" },
     { "key": "champagne", "regex": "champagne" },
     { "key": "silver", "regex": "silver|silber" },
-    { "key": "green", "regex": "green" }
+    { "key": "gold", "regex": "gold" },
+    { "key": "yellow", "regex": "yellow|gelb|daffodil|narzisse" },
+    { "key": "green", "regex": "green|gruen|grün|jade|salbei|sage|clover" },
+    { "key": "blue", "regex": "blue|pool|navy|blau|marine" },
+    { "key": "brown", "regex": "brown|chocolate|braun|schokolade" },
+    { "key": "black", "regex": "black|schwarz" },
+    { "key": "purple", "regex": "purple|regency|lila|lavende|grape|traube" },
+    { "key": "orange", "regex": "orange" }
 ]

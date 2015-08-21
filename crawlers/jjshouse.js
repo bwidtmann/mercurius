@@ -34,7 +34,7 @@ Jjshouse.prototype.crawlProductList = function($) {
 
 Jjshouse.prototype.crawlProductDetails = function($) {
     var self = this,
-        colors = [], sizes = [],
+        colors = [], sizes = [], straps = [],
         product = new Product();
     // retrieve (parse) relevant product details
     product.title = $('h1').text();
@@ -54,16 +54,17 @@ Jjshouse.prototype.crawlProductDetails = function($) {
         } else if (title.text().match(/Verschönerung/)) {
             product.embellishment = self.stringToArray(value.text());
         } else if (title.text().match(/Träger/)) {
-            product.straps = value.text();
+            straps.push(value.text());
         } else if (title.text().match(/Ärmel/)) {
-            product.sleeve = value.text();
+            straps.push(value.text());
         } else if (title.text().match(/Rücken/)) {
             product.backstyle = value.text();
         }
     });
+    product.straps = straps;
     $('meta').each(function() {
         if ($(this).attr('property') === 'og:url') {
-            product.link = $(this).attr('content');
+            product.linkUrl = $(this).attr('content');
             return false;
         }
     });

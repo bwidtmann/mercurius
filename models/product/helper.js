@@ -10,7 +10,7 @@ var normalize = function(acceptedValues, valueRaw) {
         }
         return true;
     });
-    eventBus.emit('normalized', { valueRaw: valueRaw, value: result });
+    eventBus.emit('normalized', { valueRaw: valueRaw, value: result, key: acceptedValues[0].key });
     return result;
 };
 
