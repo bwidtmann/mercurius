@@ -33,6 +33,7 @@ Bridesire.prototype.crawlProductList = function($) {
 
 Bridesire.prototype.crawlProductDetails = function($) {
     var self = this,
+        colors = [], sizes = [],
         product = new Product();
     // retrieve (parse) relevant product details
     product.title = $('h1').text();
@@ -65,11 +66,13 @@ Bridesire.prototype.crawlProductDetails = function($) {
     product.link = $('a span.red').parent().next().attr('href');
     product.imageUrl = $('#product_flash_show').attr('href');
     $('#attrib-2 option').each(function() {
-        product.colors.push($(this).text());
+        colors.push($(this).text());
     });
+    product.colors = colors;
     $('#attrib-9 option').each(function() {
-        product.sizes.push($(this).text());
+        sizes.push($(this).text());
     });
+    product.sizes = sizes;
     // store them in db
     product.save(function(err, doc) {console.log('product saved', err, doc)});
 };

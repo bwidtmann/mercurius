@@ -18,7 +18,7 @@ var normalizeArray = function(acceptedValues, valuesRaw) {
     var result = [];
     valuesRaw.forEach(function(valueRaw) {
         var valueNormalized = normalize(acceptedValues, valueRaw);
-        valueNormalized && result.push(valueNormalized);
+        valueNormalized && (result.indexOf(valueNormalized) === -1) && result.push(valueNormalized);
     });
     return result;
 };

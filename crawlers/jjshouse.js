@@ -34,6 +34,7 @@ Jjshouse.prototype.crawlProductList = function($) {
 
 Jjshouse.prototype.crawlProductDetails = function($) {
     var self = this,
+        colors = [], sizes = [],
         product = new Product();
     // retrieve (parse) relevant product details
     product.title = $('h1').text();
@@ -68,11 +69,13 @@ Jjshouse.prototype.crawlProductDetails = function($) {
     });
     product.imageUrl = $('img#magnify_pic').attr('src');
     $('.pis-color').each(function() {
-        product.colors.push($(this).attr('data-value'));
+        colors.push($(this).attr('data-value'));
     });
+    product.colors = colors;
     $('#_size option').each(function() {
-        product.sizes.push($(this).text().slice(3,6).trim());
+        sizes.push($(this).text().slice(3,6).trim());
     });
+    product.sizes = sizes;
     // store them in db
     product.save(function(err, doc) {console.log('product saved', doc, err)});
 };
