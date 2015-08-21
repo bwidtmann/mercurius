@@ -46,7 +46,12 @@ Jjshouse.prototype.crawlProductDetails = function($) {
         if (title.text().match(/Silhouette/)) {
             product.silhouette = value.text();
         } else if (title.text().match(/Halsausschnitt/)) {
-            product.neckline = value.text();
+            //jjshouse translates 'neckholder' wrong to 'Träger'!
+            if (value.text().trim().match(/^Träger$/)) {
+                straps.push('neckholder');
+            } else {
+                product.neckline = value.text();
+            }
         } else if (title.text().match(/Saum|Zug/)) {
             product.hemline = value.text();
         } else if (title.text().match(/Stoff/)) {
