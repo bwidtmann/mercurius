@@ -9,12 +9,15 @@ var Jjshouse = function() {
 
 Jjshouse.prototype.__proto__ = Site.prototype;
 
+Jjshouse.prototype.crawlCategoryList = function($) {
+    this.downloadUrl(this.startUrl, this.crawlProductList.bind(this));
+};
+
 Jjshouse.prototype.crawlProductList = function($) {
     var self = this,
         link;
     // go through all products on page x
     $('.catpl-prod').each(function() {
-        console.log('.catpl-prod');
         // find link of current product to its product details page
         link = self.baseUrl + $(this).find('.pic>a').attr('href');
         // follow link to product details

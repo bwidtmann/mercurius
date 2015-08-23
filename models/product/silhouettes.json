@@ -1,5 +1,5 @@
 [
-    { "key": "ballGown", "regex": "ball|gown|duchesse" },
+    { "key": "ballGown", "regex": "ball.*gown|duchesse" },
     { "key": "empire", "regex": "empire" },
     { "key": "trumpetMermaid", "regex": "trumpet|trompete|mermaid|meerjungfrau" },
     { "key": "sheathColumn", "regex": "sheath|column|etui" },

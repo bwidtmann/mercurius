@@ -6,7 +6,7 @@ var Site = function() {};
 
 Site.prototype.crawl = function() {
     eventBus.emit('started', { name: this.startUrl });
-    this.downloadUrl(this.startUrl, this.crawlProductList.bind(this));
+    this.downloadUrl(this.startUrl, this.crawlCategoryList.bind(this));
 };
 
 Site.prototype.downloadUrl = function(url, callback) {

@@ -9,6 +9,10 @@ var Bridesire = function() {
 
 Bridesire.prototype.__proto__ = Site.prototype;
 
+Bridesire.prototype.crawlCategoryList = function($) {
+    this.downloadUrl(this.startUrl, this.crawlProductList.bind(this));
+};
+
 Bridesire.prototype.crawlProductList = function($) {
     var self = this,
         link;
