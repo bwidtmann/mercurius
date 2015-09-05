@@ -10,38 +10,41 @@ var Jjshouse = function() {
 Jjshouse.prototype.__proto__ = Site.prototype;
 
 Jjshouse.prototype.crawlCategoryList = function($) {
-    this.downloadUrl(this.startUrl, this.crawlProductList.bind(this));
+    return this.downloadUrl(this.startUrl).then(this.crawlProductList.bind(this));
 };
 
 Jjshouse.prototype.crawlProductList = function($) {
     var self = this,
-        link;
+        link, promise;
     // go through all products on page x
     $('.catpl-prod').each(function() {
         // find link of current product to its product details page
         link = self.baseUrl + $(this).find('.pic>a').attr('href');
         // follow link to product details
-        self.downloadUrl(link, self.crawlProductDetails.bind(self));
+        promise = self.downloadUrl(link).then(self.crawlProductDetails.bind(self, link));
     });
     // try to go to next page
     $('.page_redirect').each(function() {
         if ($(this).text().match(/Nächste/)) {
             link = self.baseUrl + $(this).attr('href');
             // follow link to next page
-            self.downloadUrl(link, self.crawlProductList.bind(self));
+            promise = self.downloadUrl(link).then(self.crawlProductList.bind(self));
             return false;
         }
     });
+    return promise;
 
 };
 
-Jjshouse.prototype.crawlProductDetails = function($) {
+Jjshouse.prototype.crawlProductDetails = function(link, $) {
     var self = this,
         colors = [], sizes = [], straps = [],
         product = new Product();
     // retrieve (parse) relevant product details
     product.title = $('h1').text();
     product.price = $('#id_shop_price').text();
+    product.linkUrl = link;
+
     $('table.goods_attribute_new>tr').each(function() {
         var title = $(this).find('td:first-child'),
             value = title.next();
@@ -70,12 +73,7 @@ Jjshouse.prototype.crawlProductDetails = function($) {
         }
     });
     product.straps = straps;
-    $('meta').each(function() {
-        if ($(this).attr('property') === 'og:url') {
-            product.linkUrl = $(this).attr('content');
-            return false;
-        }
-    });
+
     product.imageUrl = $('img#magnify_pic').attr('src');
     $('.pis-color').each(function() {
         colors.push($(this).attr('data-value'));

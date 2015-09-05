@@ -10,39 +10,40 @@ var Bridesire = function() {
 Bridesire.prototype.__proto__ = Site.prototype;
 
 Bridesire.prototype.crawlCategoryList = function($) {
-    this.downloadUrl(this.startUrl, this.crawlProductList.bind(this));
+    return this.downloadUrl(this.startUrl).then(this.crawlProductList.bind(this));
 };
 
 Bridesire.prototype.crawlProductList = function($) {
     var self = this,
-        link;
+        link, promise;
     // go through all products on page x
     $('#list_bg_big_img>ul>li').each(function() {
         // find link of current product to its product details page
         link = $(this).find('a').attr('href');
         // follow link to product details
-        self.downloadUrl(link, self.crawlProductDetails.bind(self));
+        promise = self.downloadUrl(link).then(self.crawlProductDetails.bind(self,link));
     });
     // try to go to next page
     $('p.b>a').each(function() {
         if ($(this).attr('title').trim() === 'Next Page') {
             link = $(this).attr('href');
             // follow link to next page
-            self.downloadUrl(link, self.crawlProductList.bind(self));
+            promise = self.downloadUrl(link).then(self.crawlProductList.bind(self));
             return false;
         }
     });
+    return promise;
 
 };
 
-Bridesire.prototype.crawlProductDetails = function($) {
+Bridesire.prototype.crawlProductDetails = function(link, $) {
     var self = this,
         colors = [], sizes = [], straps = [],
         product = new Product();
     // retrieve (parse) relevant product details
     product.title = $('h1').text();
     product.price = $('#products_price_unit').text();
-    product.category = $('a span.red').text();
+    product.linkUrl = link;
 
     $('.description_sec>strong').each(function() {
         var title = $(this).text(),
@@ -66,7 +67,7 @@ Bridesire.prototype.crawlProductDetails = function($) {
         }
     });
     product.straps = straps;
-    product.linkUrl = $('a span.red').parent().next().attr('href');
+
     product.imageUrl = $('#product_flash_show').attr('href');
     $('#attrib-2 option').each(function() {
         colors.push($(this).text());
