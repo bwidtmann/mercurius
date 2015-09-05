@@ -1,11 +1,12 @@
-var eventBus = require('../buses/eventbus.js'),
-    report = {
-        successes: [],
-        failures: []
-    };
+var Report = require('./report.js');
+var eventBus = require('../buses/eventbus.js');
+
+var report;
 
 eventBus.on('started', function(e) {
     console.log('[Reporter] started', e);
+    report = new Report();
+    report.startedAt = Date.now();
 });
 eventBus.on('normalized', function(e) {
     if (e.value) {
@@ -15,7 +16,10 @@ eventBus.on('normalized', function(e) {
     }
 });
 eventBus.on('ended', function() {
-    console.log('[Reporter] crawler ended received!');
-    console.log('[Reporter] success:', report.successes.length);
-    console.log('[Reporter] failures:', report.failures.length);
+    console.log('[Reporter] crawler ended -> creating report...');
+    report.endedAt = Date.now();
+    report.save(function(err, doc) {
+        console.log('[Reporter] report saved', doc, err);
+        eventBus.emit('reporter:ended');
+    });
 });

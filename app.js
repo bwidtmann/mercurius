@@ -2,6 +2,7 @@ var express = require('express');
 var db = require('./db.js');
 var Crawler = require('./crawlers/crawler.js');
 var Product = require('./models/product.js');
+var Report = require('./reporters/report.js');
 
 // Constants
 var PORT = 8080;
@@ -36,6 +37,13 @@ app.get('/crawl', function (req, res) {
     var crawler = new Crawler(req.query.site);
     crawler.crawl();
 
+});
+
+app.get('/reports', function (req, res) {
+
+    Report.find({}, function(err, reports) {
+        res.send(reports);
+    }).sort({ startedAt: -1 });
 });
 
 app.listen(PORT);

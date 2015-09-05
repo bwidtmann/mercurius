@@ -6,7 +6,7 @@ var eventBus = require('./buses/eventbus.js');
 var crawler = new Crawler(process.env.CRAWLER);
 crawler.crawl();
 
-eventBus.on('ended', function() {
-    console.log('crawler ended received!');
+eventBus.on('reporter:ended', function() {
+    console.log('report:ended received!');
     db.close();
 });
