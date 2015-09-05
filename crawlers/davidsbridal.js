@@ -10,27 +10,28 @@ var Davidsbridal = function() {
 Davidsbridal.prototype.__proto__ = Site.prototype;
 
 Davidsbridal.prototype.crawlCategoryList = function($) {
-    this.downloadUrl(this.startUrl, this.crawlProductList.bind(this));
+    return this.downloadUrl(this.startUrl).then(this.crawlProductList.bind(this));
 };
 
 Davidsbridal.prototype.crawlProductList = function($) {
     var self = this,
-        link, price;
+        link, price, promise;
     // go through all products on page x
     $('#ctnr-prod-items>.ctnr-prod-item').each(function() {
         // find link of current product to its product details page
         link = $(this).find('.product_info>a').attr('href');
         price = $(this).find('.product_info>.product_price>a').text();
         // follow link to product details
-        self.downloadUrl(link, self.crawlProductDetails.bind(self, link, price));
+        promise = self.downloadUrl(link).then(self.crawlProductDetails.bind(self, link, price));
     });
     // try to go to next page
     $('.paging-next').each(function() {
         link = $(this).attr('href');
         // follow link to next page
-        self.downloadUrl(link, self.crawlProductList.bind(self));
+        promise = self.downloadUrl(link).then(self.crawlProductList.bind(self));
         return false;
     });
+    return promise;
 
 };
 

@@ -1,25 +1,27 @@
-var http = require('http');
+var Promise = require('bluebird');
+var request = Promise.promisifyAll(require('request'));
 var cheerio = require('cheerio');
 var eventBus = require('../buses/eventbus.js');
 
 var Site = function() {};
 
 Site.prototype.crawl = function() {
+    var self = this;
     eventBus.emit('started', { name: this.startUrl });
-    this.downloadUrl(this.startUrl, this.crawlCategoryList.bind(this));
+    this.downloadUrl(this.startUrl).then(function($) {
+        self.crawlCategoryList($).then(function() {
+            eventBus.emit('ended');
+        })
+    });
 };
 
-Site.prototype.downloadUrl = function(url, callback) {
+Site.prototype.downloadUrl = function(url) {
     console.log('downloadUrl: ', url);
-    http.get(url, function(res) {
-        var data = "";
-        res.on('data', function (chunk) {
-            data += chunk;
+    return request.getAsync(url).spread(function(response, body) {
+        return new Promise(function(resolve, reject) {
+            resolve(cheerio.load(body));
         });
-        res.on('end', function() {
-            callback(cheerio.load(data));
-        });
-    })
+    });
 };
 
 Site.prototype.stringToArray = function(string) {
