@@ -1,5 +1,4 @@
 var express = require('express');
-var reporter = require('./reporters/reporter.js');
 var db = require('./db.js');
 var Crawler = require('./crawlers/crawler.js');
 var Product = require('./models/product.js');
@@ -20,14 +19,18 @@ app.get('/search', function (req, res) {
     }).sort({ price: -1 });
 });
 
+app.get('/flush', function (req, res) {
+
+    // flush all products in db
+    Product.remove({}, function(err) {
+        res.send('products flushed');
+    });
+
+});
+
 app.get('/crawl', function (req, res) {
 
     res.send('crawling ' + req.query.site + ' ...\n');
-
-    // first flush all products before crawling new products
-    Product.remove({}, function(err) {
-        console.log('products removed', err);
-    });
 
     // start crawling
     var crawler = new Crawler(req.query.site);

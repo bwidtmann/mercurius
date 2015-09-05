@@ -1,3 +1,5 @@
+var reporter = require('../reporters/reporter.js');
+
 var Crawler = function(name) {
     var Site = require('./' + name + '.js');
     this.name = name;
