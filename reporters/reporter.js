@@ -19,7 +19,6 @@ eventBus.on('ended', function() {
     console.log('[Reporter] crawler ended -> creating report...');
     report.endedAt = Date.now();
     report.save(function(err, doc) {
-        console.log('[Reporter] report saved', doc, err);
         eventBus.emit('reporter:ended');
     });
 });

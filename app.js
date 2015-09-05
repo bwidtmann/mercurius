@@ -10,13 +10,39 @@ var PORT = 8080;
 // App
 var app = express();
 
+var renderProducts = function(products) {
+    var html = '';
+    products.forEach(function(product) {
+        html += '<div style="clear:both">' +
+        '<div style="position: relative; float: left; width: 300px">' +
+        '<a href="' + product.linkUrl + '">' +
+            '<img src=' + product.imageUrl + ' width="300px"></img>' +
+        '</a>' +
+        '</div>' +
+        '<div style="position: relative;">' +
+        '<div>title: ' + product.title + '</div>' +
+        '<div>silhouette: ' + product.silhouette + '</div>' +
+        '<div>neckline: ' + product.neckline + '</div>' +
+        '<div>hemline: ' + product.hemline + '</div>' +
+        '<div>fabric: ' + product.fabric + '</div>' +
+        '<div>backstyle: ' + product.backstyle + '</div>' +
+        '<div>straps: ' + product.straps + '</div>' +
+        '<div>colors: ' + product.colors + '</div>' +
+        '<div>sizes: ' + product.sizes + '</div>' +
+        '<div>price: ' + product.price + '</div>' +
+        '</div>' +
+        '</div>';
+    });
+    return html;
+};
+
 app.get('/search', function (req, res) {
 
     Product.find({
         //category: 'Meerjungfrauen-Stil',
         //price: { $gt: 0, $lt: 250 }
         }, function(err, products) {
-            res.send(products);
+            res.send(renderProducts(products));
     }).sort({ price: -1 });
 });
 
