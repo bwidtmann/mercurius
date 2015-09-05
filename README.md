@@ -24,3 +24,9 @@ fig up
 ```
 
 Go to http://192.168.59.103:8080
+
+Run the crawler:
+
+```
+fig run -e CRAWLER=jjshouse app node crawl.js
+```

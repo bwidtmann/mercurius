@@ -16,8 +16,7 @@
   },
   "scripts": {
     "install": "npm install --no-bin-links",
-    "start": "node app.js 2> debug.log",
-    "crawl": "node crawl.js 2> debug_crawler.log",
+    "start": "node app.js",
     "test": "./node_modules/.bin/jasmine-node spec"
   }
 }
