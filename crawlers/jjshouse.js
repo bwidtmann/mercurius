@@ -4,7 +4,7 @@ var Site = require('./site.js');
 var Jjshouse = function() {
     Site.apply(this, Array.prototype.slice.call(arguments));
     this.baseUrl = 'http://www.jjshouse.com';
-    this.startUrl = 'http://www.jjshouse.com/de/Brautkleider-c2';
+    this.startUrl = 'http://www.jjshouse.com/Cheap-Wedding-Dresses-c2';
 };
 
 Jjshouse.prototype.__proto__ = Site.prototype;
@@ -25,7 +25,7 @@ Jjshouse.prototype.crawlProductList = function($) {
     });
     // try to go to next page
     $('.page_redirect').each(function() {
-        if ($(this).text().match(/Nächste/)) {
+        if ($(this).text().match(/Next/)) {
             link = self.baseUrl + $(this).attr('href');
             // follow link to next page
             promise = self.downloadUrl(link).then(self.crawlProductList.bind(self));
@@ -51,24 +51,24 @@ Jjshouse.prototype.crawlProductDetails = function(link, $) {
 
         if (title.text().match(/Silhouette/)) {
             product.silhouette = value.text();
-        } else if (title.text().match(/Halsausschnitt/)) {
-            //jjshouse translates 'neckholder' wrong to 'Träger'!
-            if (value.text().trim().match(/^Träger$/)) {
+        } else if (title.text().match(/Neckline/)) {
+            //jjshouse puts 'neckholder' wrong to 'neckline'! -> should be 'straps'
+            if (value.text().trim().match(/^Halter$/)) {
                 straps.push('neckholder');
             } else {
                 product.neckline = value.text();
             }
-        } else if (title.text().match(/Saum|Zug/)) {
+        } else if (title.text().match(/Hemline|Train/)) {
             product.hemline = value.text();
-        } else if (title.text().match(/Stoff/)) {
+        } else if (title.text().match(/Fabric/)) {
             product.fabric = self.stringToArray(value.text());
-        } else if (title.text().match(/Verschönerung/)) {
+        } else if (title.text().match(/Embellishment/)) {
             product.embellishment = self.stringToArray(value.text());
-        } else if (title.text().match(/Träger/)) {
+        } else if (title.text().match(/Straps/)) {
             straps.push(value.text());
-        } else if (title.text().match(/Ärmel/)) {
+        } else if (title.text().match(/Sleeve/)) {
             straps.push(value.text());
-        } else if (title.text().match(/Rücken/)) {
+        } else if (title.text().match(/Back/)) {
             product.backstyle = value.text();
         }
     });

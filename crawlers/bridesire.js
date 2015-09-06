@@ -3,8 +3,8 @@ var Site = require('./site.js');
 
 var Bridesire = function() {
     Site.apply(this, Array.prototype.slice.call(arguments));
-    this.baseUrl = 'http://www.bridesire.de';
-    this.startUrl = 'http://www.bridesire.de/brautkleider_c97';
+    this.baseUrl = 'http://www.bridesire.com';
+    this.startUrl = 'http://www.bridesire.com/bridal-gowns_c97';
 };
 
 Bridesire.prototype.__proto__ = Site.prototype;
@@ -51,18 +51,18 @@ Bridesire.prototype.crawlProductDetails = function(link, $) {
 
         if (title.match(/Silhouette/i)) {
             product.silhouette = value;
-        } else if (title.match(/Ausschnitt/i)) {
+        } else if (title.match(/Neckline/i)) {
             product.neckline = value;
             straps.push(value);
-        } else if (title.match(/Saum/i)) {
+        } else if (title.match(/Hemline|Train/i)) {
             product.hemline = value;
-        } else if (title.match(/Stoff/i)) {
+        } else if (title.match(/Fabric/i)) {
             product.fabric = self.stringToArray(value);
-        } else if (title.match(/Verschönerung|Verzierung/i)) {
+        } else if (title.match(/Embellishment/i)) {
             product.embellishment = self.stringToArray(value);
-        } else if (title.match(/Ärmel/i)) {
+        } else if (title.match(/Sleeve/i)) {
             straps.push(value);
-        } else if (title.match(/Rücken/i)) {
+        } else if (title.match(/Back/i)) {
             product.backstyle = value;
         }
     });
