@@ -1,5 +1,5 @@
 [
-  { "key": "short", "regex": "kurz|mini|short" },
+  { "key": "short", "regex": "kurz|/[^a-z]+/mini/[^a-z]+/|short" },
   { "key": "knee", "regex": "knie|knee" },
   { "key": "tea", "regex": "waden|tea" },
   { "key": "ankle", "regex": "knöchel|ankle" },

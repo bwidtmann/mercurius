@@ -9,6 +9,7 @@ var hemlines = require('./product/hemlines.json');
 var straps = require('./product/straps.json');
 var backstyles = require('./product/backstyles.json');
 var fabrics = require('./product/fabrics.json');
+var embellishments = require('./product/embellishments.json');
 
 var schema = new mongoose.Schema({
     title: { type: String, trim: true },
@@ -17,6 +18,7 @@ var schema = new mongoose.Schema({
     neckline: { type: String, set: function(valueRaw) { return helper.normalize(necklines, valueRaw) } },
     hemline: { type: String, set: function(valueRaw) { return helper.normalize(hemlines, valueRaw) } },
     fabric: { type: Array, set: function(valueRaw) { return helper.normalizeArray(fabrics, valueRaw) } },
+    embellishment: { type: Array, set: function(valueRaw) { return helper.normalizeArray(embellishments, valueRaw) } },
     backstyle: { type: String, set: function(valueRaw) { return helper.normalize(backstyles, valueRaw) } },
     straps: { type: Array, set: function(valueRaw) { return helper.normalizeArray(straps, valueRaw) } },
     linkUrl: { type: String, trim: true },

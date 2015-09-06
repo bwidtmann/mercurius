@@ -5,5 +5,7 @@
     { "key": "offShoulder", "regex": "off.*shoulder|schulterfrei" },
     { "key": "square", "regex": "square|carre|carré|rechteck" },
     { "key": "scalloped", "regex": "scallop|welle" },
-    { "key": "high", "regex": "high|steh" }
+    { "key": "high", "regex": "high|steh" },
+    { "key": "illusion", "regex": "illusion" },
+    { "key": "bateau", "regex": "bateau|uboot|u.*boot" }
 ]

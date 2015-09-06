@@ -25,6 +25,7 @@ var renderProducts = function(products) {
         '<div>neckline: ' + product.neckline + '</div>' +
         '<div>hemline: ' + product.hemline + '</div>' +
         '<div>fabric: ' + product.fabric + '</div>' +
+        '<div>embellishment: ' + product.embellishment + '</div>' +
         '<div>backstyle: ' + product.backstyle + '</div>' +
         '<div>straps: ' + product.straps + '</div>' +
         '<div>colors: ' + product.colors + '</div>' +

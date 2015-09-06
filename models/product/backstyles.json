@@ -1,6 +1,7 @@
 [
-    { "key": "zipper", "regex": "zipper|reißverschluss" },
-    { "key": "laceUp", "regex": "schnürung|lace.*up|spitzen" },
+    { "key": "zipper", "regex": "zip|reißverschluss" },
+    { "key": "laceUp", "regex": "schnür|lace.*up|spitzen" },
     { "key": "buttons", "regex": "button|knöpfe|knopf" },
-    { "key": "backless", "regex": "backless|rückenfrei" }
+    { "key": "backless", "regex": "backless|rückenfrei" },
+    { "key": "illusion", "regex": "illusion" }
 ]

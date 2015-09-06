@@ -1,0 +1,12 @@
+[
+  { "key": "lace", "regex": "lace|spitze" },
+  { "key": "pearl", "regex": "perle|beading|pearl" },
+  { "key": "ruffle", "regex": "ruffle|rüsche|ruching" },
+  { "key": "sequins", "regex": "sequin|paillette" },
+  { "key": "flowers", "regex": "flowers|blume" },
+  { "key": "embroidery", "regex": "embroider|stick" },
+  { "key": "sash", "regex": "schleife|gürtel|sash|bow|ribbon|bänder|band|schärpe" },
+  { "key": "crystal", "regex": "crystal|kristall" },
+  { "key": "feather", "regex": "feather|feder|pelz" },
+  { "key": "buttons", "regex": "button|knopf|knöpfe" }
+]
